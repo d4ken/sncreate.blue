@@ -1,0 +1,9 @@
+---
+const { platform, username } = Astro.props;
+import { Icon } from "astro-iconify";
+const length = 36;
+---
+
+<a href={`https://www.${platform}.com/${username}`}>
+  <Icon pack="mdi" name={platform} width={length} height={length} />
+</a>
