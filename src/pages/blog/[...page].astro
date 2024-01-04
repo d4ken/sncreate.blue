@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+import type { Page, GetStaticPathsOptions } from "astro";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const allPosts = await Astro.glob("../posts/*.md");
+  return paginate(allPosts.toReversed(), { pageSize: 3 });
+}
+
+const pageTitle = "SNCreate";
+const { page } = Astro.props;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <ul>
+    {
+      page.data.map((post) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
+  </ul>
+
+  <div class="pagination">
+    {page.url.prev ? <a href={page.url.prev}>Previous </a> : null}
+    {page.url.next ? <a href={page.url.next}>Next</a> : null}
+  </div>
+</BaseLayout>
+<style>
+  .pagination a {
+    text-decoration: none;
+  }
+</style>
