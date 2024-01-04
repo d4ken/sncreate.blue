@@ -1,8 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Social from "../components/Social.astro";
+
 const pageTitle = "SNCreate";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <h3>Abou me...</h3>
+  <div>
+    Unityエンジニアです。<br />
+    主にハイパーカジュアルゲーム開発に携わってます。 <br />
+    Unity, C#, Python, JavaScriptを用いて開発することが多いです。<br />
+    
+    <Social platform="github" username="d4ken" />
+  </div>
 </BaseLayout>
