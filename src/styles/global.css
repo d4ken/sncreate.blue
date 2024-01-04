@@ -58,3 +58,18 @@ a:focus {
     display: none;
   }
 }
+
+/* ダークテーマ */
+
+html.dark {
+  background-color: #171a23;
+  color-scheme: dark;
+  a:link {
+    color: lightskyblue;
+  }
+}
+
+.dark .nav-links a {
+  color-scheme: light;
+  color: #f0f0f0;
+}

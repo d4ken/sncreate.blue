@@ -1,8 +1,18 @@
 ---
+import Greeting from "../components/Greeting";
 import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "SNCreate";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h3>こんにちはピヨ</h3>
+  <Greeting
+    client:load
+    messages={[
+      "こんにちは、ピヨッ！",
+      "おはこっこー",
+      "こんこっこー",
+      "ばんこっこー",
+      "おはぽっぽ",
+    ]}
+  />
 </BaseLayout>
