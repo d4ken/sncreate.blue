@@ -1,7 +1,6 @@
 ---
 import "the-new-css-reset";
 import "../styles/global.css";
-import "../styles/water.min.css";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 const { pageTitle } = Astro.props;
@@ -11,11 +10,14 @@ const { pageTitle } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
+    />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
-  </head>
-  <body>
+  </head><body>
     <Header />
     <h1>{pageTitle}</h1>
     <slot />
