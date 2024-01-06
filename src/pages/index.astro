@@ -5,14 +5,21 @@ const pageTitle = "SNCreate";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <Greeting
-    client:load
-    messages={[
-      "こんにちは、ピヨッ！",
-      "おはこっこー",
-      "こんこっこー",
-      "ばんこっこー",
-      "おはぽっぽ",
-    ]}
-  />
+    <div class="content">
+        <Greeting
+                client:load
+                messages={[
+                    "こんにちは、ピヨッ！",
+                    "おはこっこー",
+                    "こんこっこー",
+                    "ばんこっこー",
+                    "おはぽっぽ",
+                ]}
+        />
+    </div>
 </BaseLayout>
+<style>
+    .content {
+        text-align: center;
+    }
+</style>

@@ -1,5 +1,6 @@
 /* ナビゲーションのスタイル */
 .hamburger {
+  margin: 10px;
   padding-right: 20px;
   cursor: pointer;
 }
@@ -9,14 +10,15 @@
   width: 40px;
   height: 5px;
   margin-bottom: 10px;
-  background-color: #ff9776;
+  background-color: aliceblue;
 }
 
 .nav-links {
+  text-align: center;
   width: 100%;
   top: 5rem;
   left: 48px;
-  background-color: #ff9776;
+  background-color: aliceblue;
   display: none;
   margin: 0;
 }
@@ -33,16 +35,21 @@
 
 .nav-links a:hover,
 a:focus {
-  background-color: #ff9776;
+  background-color: aliceblue;
 }
 
 .expanded {
   display: unset;
 }
 
+.profile_icon {
+  border: solid 3px lightskyblue;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 @media screen and (min-width: 636px) {
   .nav-links {
-    margin-left: 5em;
     display: block;
     position: static;
     width: auto;
@@ -58,19 +65,3 @@ a:focus {
     display: none;
   }
 }
-
-/* ダークテーマ */
-
-/* html.dark {
-  background-color: #171a23;
-  color-scheme: dark;
-  a:link {
-    color: lightskyblue;
-  }
-  color: #f0f0f0;
-}
-
-.dark .nav-links a {
-  color-scheme: light;
-  color: #f0f0f0;
-} */

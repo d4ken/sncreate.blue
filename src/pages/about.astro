@@ -1,17 +1,33 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Social from "../components/Social.astro";
-
-const pageTitle = "SNCreate";
+import profile_icon from "../images/d4ken_icon.png";
+const pageTitle = "About";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h3>Abou me...</h3>
+  <div class="profile">
+    <Image class="profile_icon" src={profile_icon}
+           width="128"
+           height="128"
+           quality="low"
+           alt="profile icon"/>
+    <h3>D4ken</h3>
+  </div>
   <div>
-    Unityエンジニアです。<br />
-    主にハイパーカジュアルゲーム開発に携わってます。 <br />
-    個人開発では主にUnity, Python, Flutter, JavaScriptで作ってます。<br />
-
-    <Social platform="github" username="d4ken" />
+    <p>
+      Unityエンジニアです。<br />
+      主にハイパーカジュアルゲーム開発に携わってます。 <br />
+      個人開発では主にUnity, Python, Flutter, JavaScriptで作ってます。<br />
+    </p>
+    <div style="width: 100px; height: 60px; justify-content: space-between; display: flex; align-items: center;">
+      <Social style="width:50px; height: 40px;" platform="github" username="d4ken" />
+    </div>
   </div>
 </BaseLayout>
+<style>
+  .profile {
+    text-align: center;
+  }
+</style>
