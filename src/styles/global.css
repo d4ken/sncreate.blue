@@ -1,67 +1,79 @@
 /* ナビゲーションのスタイル */
 .hamburger {
-  margin: 10px;
-  padding-right: 20px;
-  cursor: pointer;
+    margin: 10px;
+    padding-right: 20px;
+    cursor: pointer;
 }
 
 .hamburger .line {
-  display: block;
-  width: 40px;
-  height: 5px;
-  margin-bottom: 10px;
-  background-color: aliceblue;
+    display: block;
+    width: 40px;
+    height: 5px;
+    margin-bottom: 10px;
+    background-color: aliceblue;
 }
 
 .nav-links {
-  text-align: center;
-  width: 100%;
-  top: 5rem;
-  left: 48px;
-  background-color: aliceblue;
-  display: none;
-  margin: 0;
+    text-align: center;
+    width: 100%;
+    top: 5rem;
+    left: 48px;
+    background-color: aliceblue;
+    display: none;
+    margin: 0;
 }
 
 .nav-links a {
-  display: block;
-  text-align: center;
-  padding: 10px 0;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-transform: uppercase;
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .nav-links a:hover,
 a:focus {
-  background-color: aliceblue;
+    background-color: aliceblue;
 }
 
 .expanded {
-  display: unset;
+    display: unset;
 }
 
 .profile_icon {
-  border: solid 3px lightskyblue;
-  border-radius: 50%;
-  object-fit: cover;
+    border: solid 3px lightskyblue;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/*シンタックスハイライト設定*/
+pre > code {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* ブログ記事内画像 */
+.blog-content > p > img {
+    display: block;
+    margin: auto;
 }
 
 @media screen and (min-width: 636px) {
-  .nav-links {
-    display: block;
-    position: static;
-    width: auto;
-    background: none;
-  }
+    .nav-links {
+        display: block;
+        position: static;
+        width: auto;
+        background: none;
+    }
 
-  .nav-links a {
-    display: inline-block;
-    padding: 15px 20px;
-  }
+    .nav-links a {
+        display: inline-block;
+        padding: 15px 20px;
+    }
 
-  .hamburger {
-    display: none;
-  }
+    .hamburger {
+        display: none;
+    }
 }
