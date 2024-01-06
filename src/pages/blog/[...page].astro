@@ -1,33 +1,53 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import BlogPost from "../../components/BlogPost.astro";
-import type { Page, GetStaticPathsOptions } from "astro";
+import type {Page, GetStaticPathsOptions} from "astro";
+import PostSummary from "../../components/PostSummary.astro";
 
-export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const allPosts = await Astro.glob("../posts/*.md");
-  return paginate(allPosts.toReversed(), { pageSize: 3 });
+export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
+    const allPosts = await Astro.glob("../posts/*.md");
+    return paginate(allPosts.reverse(), {pageSize: 6});
 }
-
-const pageTitle = "SNCreate";
-const { page } = Astro.props;
+const pageTitle = "Blog";
+const {page} = Astro.props;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <ul>
-    {
-      page.data.map((post) => (
-        <BlogPost url={post.url} title={post.frontmatter.title} />
-      ))
-    }
-  </ul>
+    <div class="blog-container">
+        {
+            page.data.map((post) => {
+                return <PostSummary class="blog-card" post={post}/>
+            })
+        }
+    </div>
 
-  <div class="pagination">
-    {page.url.prev ? <a href={page.url.prev}>Previous </a> : null}
-    {page.url.next ? <a href={page.url.next}>Next</a> : null}
-  </div>
+    <div class="pagination">
+        {page.url.prev ? <a href="../blog"> {"<<"} </a> : null}
+        {page.url.prev ? <a href={page.url.prev}> {page.currentPage - 1} </a> : null}
+        <a href={page.url.current}>{page.currentPage} </a>
+        {page.url.next ? <a href={page.url.next}> {page.currentPage + 1} </a> : null}
+        {page.url.next ? <a href=`../blog/${Math.ceil(page.total / page.size)}`> {">>"} </a> : null}
+    </div>
 </BaseLayout>
 <style>
-  .pagination a {
-    text-decoration: none;
-  }
+    .blog-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+
+    .blog-container .blog-card {
+        width: 50%;
+        height: 100%;
+    }
+
+    .pagination {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .pagination a {
+        margin: 0 10px;
+        text-decoration: none;
+    }
 </style>
