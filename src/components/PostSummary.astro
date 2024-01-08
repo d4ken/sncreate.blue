@@ -4,7 +4,7 @@ const {post} = Astro.props;
 
 <div class="center">
     <div class="article-card">
-        <div class="content">
+        <div class="card-background">
             <ul class="details">
                 <li class="date">{post.frontmatter.pubDate.slice(0, 10)}</li>
                 <li class="tags">
@@ -59,7 +59,7 @@ const {post} = Astro.props;
         object-fit: cover;
     }
 
-    .article-card .content {
+    .card-background {
         box-sizing: border-box;
         width: 100%;
         position: absolute;
