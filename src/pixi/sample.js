@@ -34,13 +34,13 @@ const style = new PIXI.TextStyle({
 
 const basicText = new PIXI.Text('ぴよこ回転中', style);
 
-basicText.x = 50;
-basicText.y = 100;
+basicText.x = 0;
+basicText.y = 50;
 
 app.stage.addChild(basicText);
 
 // create a new Sprite from an image path
-const piyoko = PIXI.Sprite.from("/src/pixi/images/piyoko.png");
+const piyoko = PIXI.Sprite.from("/home/piyoko.png");
 
 // center the sprite's anchor point
 piyoko.anchor.set(0.5);
