@@ -9,6 +9,7 @@ const { frontmatter } = Astro.props;
   </div>
   <br />
   <slot />
+  <br />
   <div class="tags">
     {
       frontmatter.tags.map((tag) => (
