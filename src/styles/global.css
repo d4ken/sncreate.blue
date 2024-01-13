@@ -54,7 +54,11 @@ pre > code {
     font-size: 14px;
 }
 
-/* ブログ記事内画像 */
+/* ブログ記事設定 */
+.blog-content > h2 {
+    font-size: larger;
+}
+
 .blog-content > p > img {
     display: block;
     margin: auto;
