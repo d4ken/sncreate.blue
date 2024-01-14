@@ -16,16 +16,13 @@ const { pageTitle, className } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head><body class={className}>
+
     <Header />
     <h1>{pageTitle}</h1>
     <slot />
     <Footer />
-    <script>
-      import "../scripts/menu.js";
-    </script>
   </body>
 </html>
-
 <style>
   h2 {
     font-size: 32px;
