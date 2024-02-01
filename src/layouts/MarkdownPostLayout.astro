@@ -20,6 +20,34 @@ const { frontmatter } = Astro.props;
   <slot />
 </BaseLayout>
 
+<script type='text/javascript'>
+  (function() {
+    const btn = document.createElement('button');
+    btn.id = 'selectPre';
+    btn.textContent = 'COPY';
+    btn.addEventListener('click', () => {
+      const sel = window.getSelection();
+      const pre = btn.parentNode;
+      sel.selectAllChildren(pre);
+      sel.extend(pre, pre.childNodes.length-1);
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(sel);
+      } else {
+        document.execCommand('copy');
+      }
+    });
+    const pres = document.querySelectorAll('pre');
+    pres.forEach((pre) => {
+      pre.addEventListener('mouseover', () => {
+        pre.appendChild(btn);
+      });
+      pre.addEventListener('mouseleave', () => {
+        btn.remove();
+      });
+    });
+  }());
+
+</script>
 <style>
   a {
     color: #00539f;
@@ -39,6 +67,5 @@ const { frontmatter } = Astro.props;
     font-size: 0.8em;
     background-color: #f8fcfd;
   }
-
 
 </style>
