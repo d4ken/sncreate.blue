@@ -6,7 +6,7 @@ const {post} = Astro.props;
     <div class="article-card">
         <div class="card-background">
             <ul class="details">
-                <li class="date">{post.frontmatter.pubDate.slice(0, 10)}</li>
+                <li class="date"><strong>{post.frontmatter.pubDate.slice(0, 10)}</strong></li>
                 <li class="tags">
                     <ul>
                         {
