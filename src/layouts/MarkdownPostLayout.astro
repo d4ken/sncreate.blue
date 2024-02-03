@@ -11,7 +11,7 @@ const { frontmatter } = Astro.props;
     {
       frontmatter.tags.map((tag) => (
           <p class="tag">
-            <a href={`/tags/${tag}`}>{tag}</a>
+            <a href={`/tags/${tag}`}><strong>{tag}</strong></a>
           </p>
       ))
     }
@@ -20,6 +20,7 @@ const { frontmatter } = Astro.props;
   <slot />
 </BaseLayout>
 
+<!-- クリップボード機能-->
 <script type='text/javascript'>
   (function() {
     const btn = document.createElement('button');
