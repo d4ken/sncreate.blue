@@ -4,6 +4,9 @@ import preact from "@astrojs/preact";
 
 // https://astro.build/config
 export default defineConfig({
+  redirects: {
+    '/': '/blog/'
+  },
   markdown: {
     shikiConfig: {
       // Shikiの組み込みテーマから選択（または独自のテーマを追加）
