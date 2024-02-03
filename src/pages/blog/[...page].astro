@@ -21,12 +21,13 @@ const {page} = Astro.props;
     </div>
 
     <div class="pagination">
-        {page.url.prev ? <a href="../blog"> {"<<"} </a> : null}
+        {page.url.prev ? <a href="../blog"> {"First"} </a> : null}
         {page.url.prev ? <a href={page.url.prev}> {page.currentPage - 1} </a> : null}
         <a href={page.url.current}>{page.currentPage} </a>
         {page.url.next ? <a href={page.url.next}> {page.currentPage + 1} </a> : null}
-        {page.url.next ? <a href=`../blog/${Math.ceil(page.total / page.size)}`> {">>"} </a> : null}
+        {page.url.next ? <a href=`../blog/${Math.ceil(page.total / page.size)}`> {"Last"} </a> : null}
     </div>
+    <br>
 </BaseLayout>
 <style>
     .blog-container {
