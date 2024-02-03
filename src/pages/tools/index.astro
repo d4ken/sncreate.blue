@@ -1,0 +1,35 @@
+---
+import Greeting from "../../components/Greeting";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const pageTitle = "SNCreate";
+---
+<script>
+    import "../../pixi/sample.js";
+</script>
+
+<BaseLayout pageTitle={pageTitle}>
+    <main id="app">
+    </main>
+    <div class="greet">
+        <Greeting
+                client:load
+                messages={[
+                    "こんにちは、ピヨッ！",
+                    "おはこっこー",
+                    "こんこっこー",
+                    "ばんこっこー",
+                    "おはぽっぽ",
+                ]}
+        />
+    </div>
+</BaseLayout>
+<style>
+    main {
+        //border: 2px solid black;
+        text-align: center;
+    }
+
+    .greet {
+        text-align: center;
+    }
+</style>
