@@ -1,35 +1,52 @@
 ---
-import Greeting from "../components/Greeting";
+import PostSummary from "../components/PostSummary.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const allPosts = await Astro.glob("./posts/*.md");
+// 日付降順ソート
+const sortedPost = allPosts.sort((a,b) => {
+    const aDate = new Date(a.frontmatter.pubDate);
+    const bDate = new Date(b.frontmatter.pubDate);
+    return bDate.getTime() - aDate.getTime();
+});
 const pageTitle = "SNCreate";
+const entryLimit = 6;
 ---
-<script>
-    import "../pixi/sample.js";
-</script>
 
 <BaseLayout pageTitle={pageTitle}>
-    <main id="app">
-    </main>
-    <div class="greet">
-        <Greeting
-                client:load
-                messages={[
-                    "こんにちは、ピヨッ！",
-                    "おはこっこー",
-                    "こんこっこー",
-                    "ばんこっこー",
-                    "おはぽっぽ",
-                ]}
-        />
+    <div class="blog-container">
+        {
+            sortedPost.slice(0, entryLimit).map((post) => {
+                return <PostSummary class="blog-card" post={post}/>
+            })
+        }
     </div>
+
+    <!--<div class="pagination">-->
+    <!--    {<a href=`../blog/2`> {"続きをみる"} </a>}-->
+    <!--</div>-->
+    <br>
 </BaseLayout>
 <style>
-    main {
-        //border: 2px solid black;
+    .blog-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+
+    .blog-card {
+        width: 50%;
+        height: 100%;
+    }
+
+    .pagination {
+        margin-top: 20px;
         text-align: center;
     }
 
-    .greet {
-        text-align: center;
+    .pagination a {
+        margin: 0 10px;
+        text-decoration: none;
     }
 </style>
