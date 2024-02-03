@@ -64,6 +64,11 @@ pre > code {
     font-family: 'Fira Code';
 }
 
+pre {
+    margin-top: 9px;
+    margin-bottom: 27px;
+}
+
 /* ブログ記事設定 */
 .blog-content > p > img {
     display: block;
