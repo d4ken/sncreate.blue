@@ -5,7 +5,14 @@ import PostSummary from "../../components/PostSummary.astro";
 
 export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
     const allPosts = await Astro.glob("../posts/*.md");
-    return paginate(allPosts.reverse(), {pageSize: 6});
+    // 日付降順ソート
+    const sortedPost = allPosts.sort((a,b) => {
+        const aDate = new Date(a.frontmatter.pubDate);
+        const bDate = new Date(b.frontmatter.pubDate);
+        return  bDate.getTime() - aDate.getTime();
+    });
+
+    return paginate(sortedPost, {pageSize: 6});
 }
 const pageTitle = "Blog";
 const {page} = Astro.props;
@@ -21,11 +28,11 @@ const {page} = Astro.props;
     </div>
 
     <div class="pagination">
-        {page.url.prev ? <a href="../blog"> {"First"} </a> : null}
-        {page.url.prev ? <a href={page.url.prev}> {page.currentPage - 1} </a> : null}
+        {page.url.prev ? <a href="../blog"> {"1"} </a> : null}
+        {page.url.prev && page.currentPage != 2 ? <a href={page.url.prev}> {page.currentPage - 1} </a> : null}
         <a href={page.url.current}>{page.currentPage} </a>
-        {page.url.next ? <a href={page.url.next}> {page.currentPage + 1} </a> : null}
-        {page.url.next ? <a href=`../blog/${Math.ceil(page.total / page.size)}`> {"Last"} </a> : null}
+        {page.url.next && page.currentPage != page.total - 1  ? <a href={page.url.next}> {page.currentPage + 1} </a> : null}
+        {page.url.next ? <a href=`../blog/${Math.ceil(page.total / page.size)}`> {Math.ceil(page.total / page.size)} </a> : null}
     </div>
     <br>
 </BaseLayout>
