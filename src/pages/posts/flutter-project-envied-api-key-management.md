@@ -9,7 +9,7 @@ thumbnail:
 tags: ["Flutter","env"]
 ---
 
-ChatGPTのAPI Keyを環境変数として利用するためEnviedを導入しようとしたのですが、 公式のReadme通りにやってもbuild_runner実行時にエラーが発生しました。  
+ChatGPTのAPI Keyを環境変数として利用するため[Envied](https://pub.dev/packages/envied)を導入しようとしたのですが、 公式のReadme通りにやってもbuild_runner実行時にエラーが発生しました。  
 その対処法が見つかったのでメモを残しておきます。  
 
 ## 開発環境
@@ -75,7 +75,7 @@ $ flutter pub add --dev build_runner
 $ dart run build_runner build --delete-conflicting-outputs
 ```
 
-すると、lib/env/にenv.g.dartというファイルが生成されます。
+すると、lib/env/にenv.g.dartというファイルが生成されます。こちらが生成されていれば導入は完了です。
 ```dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
@@ -97,14 +97,16 @@ final class _Env {
 ~~~ 以下略 ~~~
 ```
 
-下記は環境変数の値の使用例になります。
+## 使用例
+
+下記のコードでコンソール上にAPI Keyの値を出力してみます。
 ```dart
 import 'env/env.dart';
 void main() {
   print(Env.OPENAI_API_KEY); // sk-###
 }
 ```
-無事、環境ファイルに記入した値がコンソールに出力されました。  
+環境ファイルに記入した値がコンソールに出力されれば成功です。  
 <br>
 ___
 <br>
