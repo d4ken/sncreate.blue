@@ -15,7 +15,17 @@ const { pageTitle, className } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
-  </head><body class={className}>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6M2KG86PL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-J6M2KG86PL');
+  </script>
+  <body class={className}>
     <div class="main-content">
       <Header />
       <h1>{pageTitle}</h1>
