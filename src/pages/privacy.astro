@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Privacy Policy";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <h2>アクセス解析ツールについて</h2>
+    <p>
+        当サイトはGoogleアナリティクスを使用しており、データ収集にはCookieが利用されます。収集されるデータは匿名であり、個人を特定するものではありません。
+        この機能はCookieを無効にすることで収集を拒否できます。詳細についてはGoogleアナリティクスサービス利用規約やGoogleポリシーと規約ページをご覧ください。
+    </p>
+    <h2>免責事項</h2>
+    <p>
+        当ブログは他サイトへのリンクや提供情報に関して一切の責任を負いません。
+        また当ブログのコンテンツ・情報について、できる限り正確な情報を提供するように努めておりますが、正確性や安全性を保証するものではありません。
+        当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。
+    </p>
+    <h2>リンクについて</h2>
+    <p>
+        当ブログは完全リンクフリーです。リンクを行う場合の許可や連絡は不要です。
+        ただし、インラインフレームの使用や画像の直リンクはご遠慮ください。
+    </p>
+</BaseLayout>
+<style>
+    p {
+        padding-bottom: 18px;
+    }
+
+    h2 {
+        border-bottom: solid 2px #f0f8ff;
+        border-left: solid 5px #f0f8ff;
+        padding: 5px 10px 5px 10px;
+    }
+</style>
