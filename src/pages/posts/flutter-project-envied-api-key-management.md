@@ -24,11 +24,11 @@ ChatGPTのAPI Keyを環境変数として利用するため[Envied](https://pub.
 最終的な構成は下記の通りです。
 ```bash
 lib/
-    env/
-        env.dart
-        env.g.dart
-    .env.dev
-    main.dart
+  ┣ env/
+  ┃  ┣ env.dart
+  ┃  ┗ env.g.dart
+  ┗ main.dart
+.env.dev
 .gitignore
 ~~~ 以下略 ~~~
 ```
