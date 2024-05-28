@@ -1,0 +1,35 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+# 実行する処理を記述する。
+jobs:
+  deploy:
+    # 走らせる仮想環境を決定する。
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: Node setup
+        uses: actions/setup-node@v1
+      # ビルドコマンド
+      - run: npm i && npm run build
+      # 秘密鍵に対する設定
+      - name: ssh key generate
+        run: echo "$SSH_SECRET_KEY" > key && chmod 600 key
+        env:
+          # `secrets` が GitHub 内での API プロパティ名は保存したものと同名にする。
+          SSH_SECRET_KEY: ${{ secrets.SSH_SECRET_KEY }}
+      # 同期のための rsync コマンド
+      - name: rsync deploy
+        run: rsync --checksum            \
+          -av                            \
+          --delete                       \
+          --exclude '.git/' \
+          -e "ssh -p 22 -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" \
+          ./dist/*                     \
+          escaity@sncreate.blue:/var/www/sncreate.blue/
