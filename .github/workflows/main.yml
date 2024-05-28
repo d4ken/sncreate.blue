@@ -1,19 +1,20 @@
-name: Build & Deploy
+name: Astro Blog Build & Deploy
 
+# トリガー指定ブランチ
 on:
   push:
     branches:
       - main
 
-# 実行する処理を記述する。
 jobs:
   deploy:
-    # 走らせる仮想環境を決定する。
+    # 仮想環境を設定
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main
+      # node バージョン設定
       - name: Node setup
         uses: actions/setup-node@v4
         with:
@@ -28,7 +29,7 @@ jobs:
       - name: ssh key generate
         run: echo "$SSH_SECRET_KEY" > .ssh/id_rsa && chmod 600 .ssh/id_rsa
         env:
-          # `secrets` が GitHub 内での API プロパティ名は保存したものと同名にする。
+          # `secrets` が GitHub 内での API プロパティ名は保存したものと同名にする
           SSH_SECRET_KEY: ${{ secrets.SSH_SECRET_KEY }}
       # 同期のための rsync コマンド
       - name: rsync deploy
