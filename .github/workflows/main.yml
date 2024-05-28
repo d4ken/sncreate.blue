@@ -21,15 +21,18 @@ jobs:
           cache: npm
       # ビルドコマンド
       - run: npm i && npm run build
-      # 秘密鍵に対する設定
+      # 秘密鍵設定
+      - name: prepare .ssh dir
+        run: mkdir -p .ssh && chmod 700 .ssh
+
       - name: ssh key generate
-        run: echo "$SSH_SECRET_KEY" > key && chmod 600 key
+        run: echo "$SSH_SECRET_KEY" > .ssh/id_rsa && chmod 600 .ssh/id_rsa
         env:
           # `secrets` が GitHub 内での API プロパティ名は保存したものと同名にする。
           SSH_SECRET_KEY: ${{ secrets.SSH_SECRET_KEY }}
       # 同期のための rsync コマンド
       - name: rsync deploy
-        run: rsync --checksum -ahv --delete --exclude ".git/" -e "ssh -i key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p ${SSH_PORT}" ./dist/ ${SSH_USER}@${SSH_HOST}:${SSH_DIR}
+        run: rsync --checksum -ahv --delete --exclude ".git/" --exclude ".ssh/" -e "ssh -i .ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p ${SSH_PORT}" ./dist/ ${SSH_USER}@${SSH_HOST}:${SSH_DIR}
         env:
           SSH_PORT: ${{ secrets.SSH_PORT }}
           SSH_USER: ${{ secrets.SSH_USER }}
