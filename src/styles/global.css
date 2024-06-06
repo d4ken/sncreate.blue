@@ -48,6 +48,8 @@ a:focus {
     object-fit: cover;
 }
 
+
+
 /* ローカルフォントのインポート */
 @font-face {
     font-family: 'Fira Code';
@@ -57,8 +59,21 @@ a:focus {
     font-display: swap;
 }
 
+/* コード */
+code {
+    padding: .1rem .4rem;
+    margin: 0 .2rem;
+    font-size: 90%;
+    white-space: nowrap;
+    background: #272822;
+    border-radius: 3px;
+}
+
 /*シンタックスハイライト設定*/
 pre > code {
+    display: block;
+    padding: 1rem 1.5rem;
+    white-space: pre;
     font-weight: bold;
     font-size: 14px;
     font-family: 'Fira Code';
@@ -83,19 +98,19 @@ pre {
 /* クリップボード機能 */
 #selectPre {
     font-weight: bold;
-    display: block;
+    display: flex;
     margin-left: auto;
     top: 8px;
     right: 8px;
-    color: #444;
+    color: #1c232b;
     background: #fff;
     padding: 2px 5px;
     border: none;
     border-radius: 2px;
     cursor: pointer;
-    opacity: 0.75;
     transition: 0.3s;
 }
+
 #selectPre:hover {
     opacity: 1;
 }
