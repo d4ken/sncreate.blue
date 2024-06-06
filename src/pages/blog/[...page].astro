@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import type {Page, GetStaticPathsOptions} from "astro";
+import type {GetStaticPathsOptions} from "astro";
 import PostSummary from "../../components/PostSummary.astro";
 
 export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
@@ -28,11 +28,10 @@ const {page} = Astro.props;
     </div>
 
     <div class="pagination">
-        {page.url.prev ? <a href="../blog"> {"1"} </a> : null}
-        {page.url.prev && page.currentPage != 2 ? <a href={page.url.prev}> {page.currentPage - 1} </a> : null}
-        <a href={page.url.current}>{page.currentPage} </a>
-        {page.url.next && page.currentPage != page.total - 1  ? <a href={page.url.next}> {page.currentPage + 1} </a> : null}
-        {page.url.next ? <a href=`../blog/${Math.ceil(page.total / page.size)}`> {Math.ceil(page.total / page.size)} </a> : null}
+        {page.url.prev ? <a href="../blog"> &lt;&lt; </a> : null}
+        {page.url.prev && page.currentPage != 2 ? <a href={page.url.prev}> &lt; </a> : null}
+        {page.url.next && page.currentPage != page.total - 1  ? <a href={page.url.next}> &gt; </a> : null}
+        {page.url.next ? <a href=`../blog/${Math.ceil(page.total / page.size)}`> &gt;&gt; </a> : null}
     </div>
     <br>
 </BaseLayout>
