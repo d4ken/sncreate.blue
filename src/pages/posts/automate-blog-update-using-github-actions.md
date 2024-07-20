@@ -5,7 +5,7 @@ pubDate: 2024-05-28
 description: "エックスサーバーで公開しているサイトをGithub Actionsを用いてGithubに変更をプッシュするだけで更新する方法を解説します！！"
 author: "D4ken"
 thumbnail:
-  "https://images.unsplash.com/photo-1602255124052-6eb89ce1b44a?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  "https://images.unsplash.com/photo-1721404283208-8c107d8276f9?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 tags: ["Astro", "ブログ"]
 ---
 
