@@ -1,47 +1,72 @@
-# Astro Starter Kit: Minimal
+# sncreate.blue
 
-```sh
-npm create astro@latest -- --template minimal
+個人ブログ **sncreate.blue** のソースコードです。Astro で静的サイトとしてビルドし、GitHub Actions 経由でデプロイする運用を想定しています。
+
+- Site: https://sncreate.blue
+
+---
+
+## 構成
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+├── .github/
+│   └── workflows/      # CI/CD（ビルド・デプロイ等の GitHub Actions）
+├── public/             # 画像などの静的ファイル（そのまま配信）
+├── src/                # Astro アプリ本体（ページ/コンポーネント/記事ロジック等）
+├── astro.config.mjs    # Astro 設定
+├── tsconfig.json       # TypeScript 設定
+├── renovate.json       # Renovate（依存更新）の設定
+├── package.json        # npm scripts / 依存関係
+└── package-lock.json   # 依存関係ロック
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+> ルーティングは Astro の慣例通り `src` 配下の実装から生成されます（例：`/about` `/blog` `/posts/<slug>` `/tags/<tag>` など）。
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+---
 
-Any static assets, like images, can be placed in the `public/` directory.
+## ローカル開発
 
-## 🧞 Commands
+```bash
+npm install
+npm run dev
+```
 
-All commands are run from the root of the project, from a terminal:
+- 開発サーバが起動し、ブラウザで確認できます（Astroのデフォルトは `localhost:4321`）。
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+ビルド & プレビュー：
 
-## 👀 Want to learn more?
+```bash
+npm run build
+npm run preview
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+## 記事/ページについて
+
+- 公開サイト上では、記事は `/posts/<slug>`、タグ一覧は `/tags/<tag>` の形で提供されています。
+- 記事追加・編集は `src` 配下（Markdown/コンテンツ管理の実装）で行います。まずは `src` 内で `posts` / `tags` / `content` などのディレクトリを起点に読むと追いやすいです。
+
+---
+
+## 環境変数
+
+GA4 などの公開環境変数は、Astro 側で `import.meta.env.PUBLIC_...` として参照します。記事内の例では `PUBLIC_GA_ID` を利用しています。
+
+### ローカル
+プロジェクト直下に `.env` を作り、例：
+
+```env
+PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+### GitHub Actions（本番）
+Actions で `${{ secrets.<NAME> }}` を使う場合は **Repository secrets** に登録する必要があります（Environment secrets では参照できないケースがある）。
+
+---
+
+## メモ
+
+- `public/` は「そのまま配信」される領域なので、画像・favicon 等の置き場として使います。
+- 依存更新は `renovate.json` で自動化（有効化している前提）されています。
