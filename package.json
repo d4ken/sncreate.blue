@@ -15,7 +15,7 @@
     "@astrojs/rss": "^4.0.7",
     "astro": "^4.12.2",
     "astro-iconify": "^1.2.0",
-    "preact": "^10.22.1",
+    "preact": "^11.0.0",
     "the-new-css-reset": "^1.11.2"
   }
 }
